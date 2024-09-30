@@ -15,7 +15,13 @@ const firebaseConfig = {
   appId: process.env.FIREBASE_APP_ID,
   measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
+console.log("Firebase Auth Domain:", process.env.FIREBASE_AUTH_DOMAIN_1);
+console.log("Firebase Project ID:", process.env.FIREBASE_PROJECT_ID);
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+export const clientDb = getFirestore(app, {
+  experimentalForceLongPolling: true,
+  useFetchStreams: false,
+});
